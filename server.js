@@ -1,8 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-const dbConfig = require("./app/config/db.config");
-const db = require("./app/models");
-const { count } = require("./app/models/role.model");
+import express from "express";
+import cors from "cors";
+import * as dbConfig from "./src/config/db.config.js";
+import db from "./src/models/index.js";
+import authDF from "./src/routes/auth.routes.js";
+import userDF from "./src/routes/user.routes.js";
+// const dbConfig = require("./app/config/db.config");
+// const db = require("./app/models");
+// const { count } = require("./app/models/role.model");
 const app = express();
 const Role = db.role;
 db.mongoose
@@ -29,9 +33,10 @@ app.get("/", (req, res) => {
     message: "Welcome to berkcan's application",
   });
 });
-require("./app/routes/auth.routes")(app);
-require("./app/routes/user.routes")(app);
-
+// require("./src/routes/auth.routes")(app);
+// require("./src/routes/user.routes")(app);
+authDF(app);
+userDF(app);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

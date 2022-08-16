@@ -1,12 +1,12 @@
-exports.allAccess = (req, res) => {
+export const allAccess = (req, res) => {
   res.status(200).send("Genel erişim");
 };
-exports.userBoard = (req, res) => {
+export const userBoard = (req, res) => {
   res.status(200).send("Kullanıcı erişimi");
 };
-exports.adminBoard = (req, res) => {
+export const adminBoard = (req, res) => {
   res.status(200).send("Admin erişimi");
 };
-exports.moderatorBoard = (req, res) => {
+export const moderatorBoard = (req, res) => {
   res.status(200).send("Moderatör erişimi");
 };
